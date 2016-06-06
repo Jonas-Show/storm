@@ -2,6 +2,7 @@ package org.junkie.storm;
 
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
+import org.apache.storm.StormSubmitter;
 import org.apache.storm.topology.TopologyBuilder;
 import org.apache.storm.tuple.Fields;
 import org.junkie.storm.bolts.WordCounter;
@@ -28,14 +29,18 @@ public class TopologyMain {
 		conf.put("wordsFile", "src/main/resources/word.txt");
 		conf.setDebug(true);
 		
+		
 		/*
-		 * Topology run
+		 * Topology run local cluster
 		 */
 		conf.put(Config.TOPOLOGY_MAX_SPOUT_PENDING, 1);
 		LocalCluster cluster = new LocalCluster();
 		cluster.submitTopology("Getting-Started-Topologie", conf, builder.createTopology());
 		Thread.sleep(5000);
 		cluster.shutdown();
+		
+		//remote cluster
+//		StormSubmitter.submitTopology("Getting-Started-Topologie", conf, builder.createTopology());
 	}
 
 }
