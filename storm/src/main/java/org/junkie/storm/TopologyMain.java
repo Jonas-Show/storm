@@ -40,6 +40,7 @@ public class TopologyMain {
 		cluster.shutdown();
 		
 		//remote cluster
+//		conf.setMaxTaskParallelism(3);
 //		StormSubmitter.submitTopology("Getting-Started-Topologie", conf, builder.createTopology());
 	}
 
